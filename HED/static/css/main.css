@@ -3,12 +3,13 @@
 
 body{
 	background-color: hsl(0, 0%, 98%);
-	background: #07051a;
+	background: #000000;
 	padding: 0;
     margin: 0;
     height: 100vh;
     width: 100%;
 }
+
 /*This cart-icon is made for the logo*/
 #cart-icon{
 	width:65px;
