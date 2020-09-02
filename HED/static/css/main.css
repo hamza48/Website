@@ -8,14 +8,9 @@ body{
     margin: 0;
     height: 100vh;
     width: 100%;
+
 }
 
-/*This cart-icon is made for the logo*/
-#cart-icon{
-	width:65px;
-	/*display: inline-block;*/
-	margin-left: 800px;
-}
 /*Those services are made for buttons of login and register*/
 .main {
   width: 100%;
@@ -172,6 +167,7 @@ form:hover .fa{
 .new_footer_area .footer_bottom {
     padding-top: 5px;
     padding-bottom: 50px;
+    bottom:0;
 }
 .footer_bottom {
     font-size: 14px;
@@ -360,3 +356,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*************footer End*****************/
+/*************button of food start*****************/
+
+.btn-circle-xl {
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 1.3rem;
+}
+/*************button of food End*****************/
+
+.page-container {
+  position: relative;
+  background-color: #000000;
+  min-height: 100vh;
+}
+.page-container p {
+    font-size:80px;
+    color: #FFFFFF;
+    text-align: center;
+}
