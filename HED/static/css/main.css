@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
-@import url(https://raw.github.com/FortAwesome/Font-Awesome/master/docs/assets/css/font-awesome.min.css);
 @import url(https://fonts.googleapis.com/css?family=Karla:400,400italic,700,700italic);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
 
@@ -14,56 +13,49 @@ body{
 
 /* Signup button*/
 .button_register {
-  display: inline-block;
-  border-radius: 50px;
-  border : none;
-  position :relative;
-  left : 20px;
-  top : 20px;
-  background-color: #FFD800;
-  border: none;
-  color: #000;
-  text-align: center;
-  font-size: 20px;
-  padding: 2px;
-  width: 120px;
-  height: 40px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
+background-color: #FFD800;
+color: #000000 !important;
+text-transform: uppercase;
+position :relative;
+background: #FFD800;
+padding: 20px;
+border: 4px solid #000 !important;
+border-radius: 6px;
+display: inline-block;
+transition: all 0.3s ease 0s;
 }
 
-.button_register span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
+.button_register:hover {
+color: #FFFFFF !important;
+border-radius: 50px;
+border-color: #FFD800 !important;
+transition: all 0.3s ease 0s;
 }
 
-.button_register span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.3s;
+.butonSubtitles {
+   color: #FFFFFF;
+   font-size: 24px;
+   position : relative;
+
+}
+.title {
+    color: #FFFFFF;
+    text-align: center;
+    top: 10px;
+    left: 200px;
+    font-size: 62px;
 }
 
-.button_register:hover span {
-  padding-right: 25px;
-  color : #fff;
-}
-
-.button_register:hover span:after {
-  opacity: 1;
-  right: 0;
-}
 
 .page_container {
   position: relative;
-  height : 800px;
-}
+  height : 200px;
 
+}
+.page_center_container {
+  position: relative;
+  height : 400px;
+}
 
 
 /*Those services are made for buttons of login and register*/
@@ -406,20 +398,21 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #FFD800; /* yellow background */
   border: none; /* Remove borders */
   color: #000000; /* White text */
-  padding: 12px 16px; /* Some padding */
+  position : relative;
   font-size: 30px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
   height: 100px;
   width: 100px;
   background-image : url('../images/gift.png');
   background-size : 100%;
+  border-radius : 6px;
 }
 
 /* Darker background on mouse-over */
 .btn_gift:hover {
   background-color: #FFFFFF;
   color : #E47900;
+  border-radius : 20px;
 }
 /*************button of gift End*****************/
-
 
