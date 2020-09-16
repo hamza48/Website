@@ -62,7 +62,7 @@ transition: all 0.3s ease 0s;
 }
 .page_center_container {
   position: relative;
-  height : 500px;
+  height : 800px;
 }
 
 
@@ -357,21 +357,22 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #FFD800; /* Blue background */
   border: none; /* Remove borders */
   color: #000000; /* White text */
+  position : relative;
   padding: 12px 16px; /* Some padding */
   font-size: 30px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
   height: 100px;
-  position : relative;
   width: 100px;
-  margin : 0
   background-image : url('../images/dinner.png');
   background-size : 100%;
+  border-radius : 6px;
 }
 
 /* Darker background on mouse-over */
 .btn_food:hover {
   background-color: #FFFFFF;
   color : #E47900;
+  border-radius : 20px;
 }
 
 
