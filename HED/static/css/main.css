@@ -37,9 +37,11 @@ transition: all 0.3s ease 0s;
 
 .butonSubtitles {
    color: #FFFFFF;
-   font-size: 20px;
+   font-size: 25px;
    position : relative;
    max-width: 100px;
+   text-shadow : 3px 3px #000000;
+   font-family: "LemonYellowSunW00-Regular", regular;
 }
 .title {
     color: #FFFFFF;
@@ -55,7 +57,7 @@ transition: all 0.3s ease 0s;
         animation: swing 1s ease;
         -webkit-animation-iteration-count: 1;
         animation-iteration-count: 1;
-        text-shadow : 2px 2px #000000;
+        text-shadow : 4px 4px #000000;
 }
 
 
@@ -436,4 +438,26 @@ h1, h2, h3, h4, h5, h6 {
   border-radius : 20px;
 }
 /*************button of gift End*****************/
+/*************button of pharmacy start*****************/
 
+.btn_pharmacy {
+  background-color: #FFD800; /* yellow background */
+  border: 4px solid #000 !important;
+  color: #000000; /* White text */
+  position : relative;
+  font-size: 30px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  height: 100px;
+  width: 100px;
+  margin : 0 auto;
+  background-image : url('../images/pharmacyLogo.png');
+  background-size : 100%;
+  border-radius : 6px;
+}
+
+/* Darker background on mouse-over */
+.btn_pharmacy:hover {
+  background-color: #FFFFFF;
+  color : #E47900;
+  border-radius : 20px;
+}
