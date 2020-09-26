@@ -8,6 +8,7 @@ body{
 	background:linear-gradient(#FF2626, #DB0000);
     height: 100vh;
     width: 100%;
+    min-width: 950px;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
@@ -367,6 +368,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 30px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
   height: 100px;
+  margin : 0 auto;
   width: 100px;
   background-image : url('../images/dinner.png');
   background-size : 100%;
@@ -396,6 +398,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 30px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
   height: 100px;
+  margin : 0 auto;
   width: 100px;
   background-image : url('../images/scooter.png');
   background-size : 100%;
@@ -420,6 +423,7 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer; /* Mouse pointer on hover */
   height: 100px;
   width: 100px;
+  margin : 0 auto;
   background-image : url('../images/gift.png');
   background-size : 100%;
   border-radius : 6px;
