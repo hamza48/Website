@@ -407,7 +407,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 100px;
   width: 100px;
   margin : 0 auto;
-  background-image : url('../images/pharmacyLogo.png');
+  background-image : url('../images/pharmacy-icon.png');
   background-size : 100%;
   border-radius : 6px;
 }
