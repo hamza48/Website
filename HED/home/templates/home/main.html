@@ -25,7 +25,7 @@
 <div class="page_container">
     <img src="{% static 'images/logoHED.png' %}"  alt="logo" style="float:right;width:280px;height:200px;">
     <a class="button_register" href="#" style="left : 20px; top : 10px;"><span>s'inscrire </span></a>
-    <a class="button_register" href="#" style="left : 20px; top : 10px;"><span>connexion </span></a>
+    <button class="button_register" href="#" style="left : 20px; top : 10px"; onclick="openForm()"><span>connexion </span></button>
 
 </div>
 <div class="page_center_container">
@@ -41,6 +41,30 @@
      <a class="btn_attention fa" href="#" style="left: 970px; top: -570px;" ></a>
      <p class="butonSubtitles" style="left : 975px; top: -555px">En panne ?</p>
 </div>
+ <!-- open form for connexion-->
+<div class="form-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Login</h1>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit" class="btn">Login</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
 
 
 <footer class="new_footer_area bg_color">
