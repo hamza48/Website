@@ -53,11 +53,7 @@ transition: all 0.3s ease 0s;
 }
 .title:hover
 {
-        -webkit-animation: swing 1s ease;
-        animation: swing 1s ease;
-        -webkit-animation-iteration-count: 1;
-        animation-iteration-count: 1;
-        text-shadow : 4px 4px #000000;
+    text-shadow : 4px 4px #000000;
 }
 
 
@@ -447,7 +443,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* The popup form - hidden by default */
 .form-popup {
-  display: none;
   background-color: #FFD800;
   font-family: "LemonYellowSunW00-Regular", regular;
   position: fixed;
@@ -503,3 +498,35 @@ h1, h2, h3, h4, h5, h6 {
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+
+/*AVATAR AFTER CONNECTION*/
+.btn_avatar {
+  background-color: #FFD800; /* yellow background */
+  border: 1px solid #000 !important;
+  color: #000000; /* White text */
+  position : relative;
+  font-size: 30px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  height: 60px;
+  width: 60px;
+  margin : 10 px;
+  background-image : url('../images/avatar.png');
+  background-size : 100%;
+  border-radius : 40px;
+}
+.avatar_name {
+  background-color: #FFD800; /* yellow background */
+  border: 1px solid #000 !important;
+  color: #000000; /* White text */
+  text-align : center;
+  position : relative;
+  font-size: 30px; /* Set a font size */
+  height: 50px;
+  width : 400px;
+  margin : 10 px;
+  background-size : 100%;
+  border-radius : 10px;
+  background-image : url('../images/avatar.png');
+  background-color: transparent;
+}
+
