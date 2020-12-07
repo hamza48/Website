@@ -502,31 +502,31 @@ h1, h2, h3, h4, h5, h6 {
 /*AVATAR AFTER CONNECTION*/
 .btn_avatar {
   background-color: #FFD800; /* yellow background */
-  border: 1px solid #000 !important;
-  color: #000000; /* White text */
   position : relative;
   font-size: 30px; /* Set a font size */
-  cursor: pointer; /* Mouse pointer on hover */
   height: 60px;
   width: 60px;
-  margin : 10 px;
+  border: 2px solid #000000;
   background-image : url('../images/avatar.png');
   background-size : 100%;
-  border-radius : 40px;
+  border-radius : 20px;
 }
 .avatar_name {
-  background-color: #FFD800; /* yellow background */
-  border: 1px solid #000 !important;
-  color: #000000; /* White text */
-  text-align : center;
+  background:none;
+  color: #FFFFFF;
+  font-family: "LemonYellowSunW00-Regular";
+  text-shadow : 1px 1px #FFFFFF;
   position : relative;
-  font-size: 30px; /* Set a font size */
-  height: 50px;
-  width : 400px;
-  margin : 10 px;
-  background-size : 100%;
-  border-radius : 10px;
-  background-image : url('../images/avatar.png');
-  background-color: transparent;
+  font-size: 25px; /* Set a font size */
 }
+.astext {
+    background:none;
+    font-family: "LemonYellowSunW00-Regular", regular;
+    text-decoration: underline;
+    border:none;
+    color : #FFFFFF;
+    margin:0;
+    padding:0;
+    cursor: pointer;
 
+}

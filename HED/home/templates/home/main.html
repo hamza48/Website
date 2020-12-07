@@ -29,7 +29,7 @@
 
     {% else %}
     <button class="button_register" style="left : 20px; top : 10px;" onclick="openForm()"><span>s'inscrire </span></button>
-    <button class="button_register" style="left : 20px; top : 10px"; onclick="openForm()"><span>connexion </span></button>
+    <button class="button_register" style="left : 20px; top : 10px"; onclick="openConnexionForm()"><span>connexion </span></button>
     {% endif %}
 </div>
 <div class="page_center_container">
@@ -56,14 +56,14 @@
 
     <h1>Login</h1>
 
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email"name="email" id = "mail" required>
+    <label for="email"><b>Username</b></label>
+    <input type="text" placeholder="Enter username"name="email" id = "mail" required>
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" id = "psw" required>
 
     <button type="submit" class="btn" >Login</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    <button type="button" class="btn cancel" onclick="closeConnexionForm()">Close</button>
   </form>
     {% if messages %}
     <ul class="messages">
@@ -74,6 +74,8 @@
 
     </ul>
     {% endif %}
+
+
 
 </div>
      <footer class="new_footer_area bg_color">
@@ -115,9 +117,8 @@
                         <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
                         <div class="f_social_icon">
                             <a class="fab fa-facebook" onclick=" window.open('https://www.facebook.com/heddelivery','_blank')"></a>
-                            <a class="fab fa-twitter" href="#"></a>
-                            <a class="fab fa-linkedin" href="#"></a>
-                            <a class="fab fa-pinterest" href="#"></a>
+                            <a class="fab fa-instagram" onclick=" window.open('https://www.instagram.com/hedelivery_/?hl=fr','_blank')"></a>
+                            <a class="fab fa-whatsapp" href="#"></a>
                         </div>
                     </div>
                 </div>
@@ -141,10 +142,10 @@
 </body>
 
 <script >
-function openForm() {
+function openConnexionForm() {
   document.getElementById("myForm").style.display = "block";
 }
-function closeForm() {
+function closeConnexionForm() {
   document.getElementById("myForm").style.display = "none";
 }
 </script>
