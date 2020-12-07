@@ -6,4 +6,6 @@ urlpatterns = [
         #Leave as empty string for base url
 	path('', views.home, name="home"),
 	path('register', views.register, name="register"),
+	path('logout',views.logout, name = 'logout'),
+	path('profile', views.profile, name = 'profile'),
 ]
