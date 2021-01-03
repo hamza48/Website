@@ -26,7 +26,7 @@
 <div class="page_container">
     <img src="{% static 'images/logoHED.png' %}"  alt="logo" style="float:right;width:280px;height:200px;">
     <a class="btn_avatar fa"  alt="avatar" style="left : 30px; top : 2px;"></a>
-    <a class="avatar_name"style=" left : -30px; top : 30px;">{{ user.first_name }}</a>
+    <a class="avatar_name"style=" left : -30px; top : 30px;">{{first_name }}</a>
     <form action="{% url 'profile' %}" method="GET">
         <button class="astext"  style=" position:relative; left : 150px;">Profile</button>
     </form>

@@ -4,5 +4,11 @@ from django import forms
 
 
 class Client(models.Model):
-    email = models.CharField(max_length=200)
-    psw = models.CharField(max_length=200)
+    emailRegistration = models.CharField(max_length=200)
+    pswRegistration1 = models.CharField(max_length=200)
+    pswRegistration2 = models.CharField(max_length=200)
+    First_name = models.CharField(max_length=200)
+    Last_name = models.CharField(max_length=200)
+
+
+

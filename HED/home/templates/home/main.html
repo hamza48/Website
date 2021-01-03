@@ -6,150 +6,203 @@
 <head>
     <meta charset="UTF-8">
     <title>HED</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" rel="stylesheet">
     <link href="//db.onlinewebfonts.com/c/49e02ac686207bfe0490c93f2918c575?family=LemonYellowSunW00-Regular" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
-
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
-
     <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" rel="stylesheet">
 </head>
+
 
 <body>
 
 <div class="page_container">
-    <img src="{% static 'images/logoHED.png' %}"  alt="logo" style="float:right;width:280px;height:200px;">
+    <img alt="logo"  src="{% static 'images/logoHED.png' %}" style="float:right;width:280px;height:200px;">
     {% if connected %}
-
+    <!-- Don't display register and logging buttons  TODO ! -->
     {% else %}
-    <button class="button_register" style="left : 20px; top : 10px;" onclick="openForm()"><span>s'inscrire </span></button>
-    <button class="button_register" style="left : 20px; top : 10px"; onclick="openConnexionForm()"><span>connexion </span></button>
+    <button class="button_register" onclick="openForm()" style="left : 20px; top : 10px;"><span>s'inscrire </span></button>
+    <button class="button_register" onclick="openConnexionForm()" style="left : 20px; top : 10px;"><span>connexion </span></button>
     {% endif %}
 </div>
+
 <div class="page_center_container">
-     <p class="title"> Une Envie à Oujda ? <br> On vous livre </p>
-     <a class="btn_gift fa" href="#" style="left: 350px; top : 70px;"></a>
-     <p class="butonSubtitles" style="left : 355px; top: 85px">Un cadeau </p>
-     <a class="btn_delivery fa" href="#" style="left: 560px; top: -90px;" ></a>
-     <p class="butonSubtitles" style="left : 565px; top: -75px">Une course </p>
-     <a class="btn_food fa" href="#" style="left: 770px; top: -250px;" ></a>
-     <p class="butonSubtitles" style="left : 780px; top: -235px">J'ai faim </p>
-     <a class="btn_pharmacy fa" href="#" style="left: 130px; top: -407px;" ></a>
-     <p class="butonSubtitles" style="left : 138px; top: -387px">Pharmacie</p>
-     <a class="btn_attention fa" href="#" style="left: 970px; top: -570px;" ></a>
-     <p class="butonSubtitles" style="left : 975px; top: -555px">En panne ?</p>
+    <p class="title"> Une Envie à Oujda ? <br> On vous livre </p>
+    <a class="btn_gift fa" href="#" style="left: 350px; top : 70px;"></a>
+    <p class="butonSubtitles" style="left : 355px; top: 85px">Un cadeau </p>
+    <a class="btn_delivery fa" href="#" style="left: 560px; top: -90px;" ></a>
+    <p class="butonSubtitles" style="left : 565px; top: -75px">Une course </p>
+    <a class="btn_food fa" href="#" style="left: 770px; top: -250px;" ></a>
+    <p class="butonSubtitles" style="left : 780px; top: -235px">J'ai faim </p>
+    <a class="btn_pharmacy fa" href="#" style="left: 130px; top: -407px;" ></a>
+    <p class="butonSubtitles" style="left : 138px; top: -387px">Pharmacie</p>
+    <a class="btn_attention fa" href="#" style="left: 970px; top: -570px;" ></a>
+    <p class="butonSubtitles" style="left : 975px; top: -555px">En panne ?</p>
 </div>
- <!-- open form for connexion-->
+
+<!--
+##################################################################
+# This Part (Form-popup) is made to display the logging form,    #
+# The condition messages means that user inputs are wrong,       #
+# this condition is used to still display the logging form with  #
+# error messages to be corrected by user, and logging            #
+##################################################################
+-->
+
 {% if messages %}
- <div class="form-popup" id="myForm" style ="display:block">
-{% else %}
- <div class="form-popup" id="myForm" style ="display:none">
-{% endif %}
-  <form class="form-container" action="{% url 'register' %}" method = "POST" >
-      {% csrf_token %}
+<div class="form-popup" id="myForm" style ="display:block">
+    {% else %}
+    <div class="form-popup" id="myForm" style ="display:none">
+        {% endif %}
+        <form action="{% url 'logginUser' %}" class="form-container" method = "POST" >
+            {% csrf_token %}
 
-    <h1>Login</h1>
+            <h1>Login</h1>
 
-    <label for="email"><b>Username</b></label>
-    <input type="text" placeholder="Enter username"name="email" id = "mail" required>
+            <label for="email"><b>Username</b></label>
+            <input id = "mail" name="email"placeholder="Enter username" required type="text">
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" id = "psw" required>
+            <label for="psw"><b>Password</b></label>
+            <input id = "psw" name="psw" placeholder="Enter Password" required type="password">
 
-    <button type="submit" class="btn" >Login</button>
-    <button type="button" class="btn cancel" onclick="closeConnexionForm()">Close</button>
-  </form>
-    {% if messages %}
-    <ul class="messages">
+            <button class="btn" type="submit" >Login</button>
+            <button class="btn cancel" onclick="closeConnexionForm()" type="button">Close</button>
+        </form>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
 
-    {% for message in messages %}
-    <li class="{{ message.tags }}">{{ message }}</li>
-    {% endfor %}
-
-    </ul>
-    {% endif %}
+    <!-- ################# !! END OF form-popup !!################# -->
 
 
+    {% block content %}
+    <div class="formRegister-popup" id="myRegisterForm" style ="display:none">
 
-</div>
-     <footer class="new_footer_area bg_color">
-    <div class="new_footer_top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
-                        <h3 class="f-title f_600 t_color f_size_18">Restez connecté(e)s</h3>
-                        <p>Ne ratez aucune nouveautées, offres, remises !</p>
+        <form action="{% url 'register' %}" class="form-container" method = "POST" >
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <h1>S'inscrire</h1>
+
+            <label for="Nom"><b>Nom</b></label>
+            <input id = "Nom" name="nom" placeholder="Entrez votre Nom" required type="text">
+            <label for="Prenom"><b>Prenom</b></label>
+            <input id = "Prenom" name="prenom" placeholder="Entrez votre Prenom" required type="text">
+            <label for="mailRegistration"><b>email</b></label>
+            <input id = "mailRegistration" name="emailRegistration" placeholder="Entrez votre mail" required type="text">
+
+            <label for="pswRegistration1"><b>Password</b></label>
+            <input id = "pswRegistration1" name="pswRegistration1" placeholder="Entrez votre mot de passe" required type="password">
+
+            <label for="pswRegistration2"><b>Password</b></label>
+            <input id = "pswRegistration2" name="pswRegistration2" placeholder="ressaisir le mot de passe" required type="password">
+
+            <button class="btn" type="submit" >s'inscrire</button>
+            <button class="btn cancel" onclick="closeForm()" type="button">Close</button>
+        </form>
+        {% endblock %}
+
+    </div>
+
+    <!--
+    #####################################################################
+    # This Part (Footer) is made to display some informations about HED #
+    # like Facebook page, how to join us, .......                       #
+    #####################################################################
+    -->
+    <footer class="new_footer_area bg_color">
+        <div class="new_footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">Restez connecté(e)s</h3>
+                            <p>Ne ratez aucune nouveautées, offres, remises !</p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
-                        <h3 class="f-title f_600 t_color f_size_18">Liens Utiles</h3>
-                        <ul class="list-unstyled f_list">
-                            <li><a href="#">Company</a></li>
-                            <li><a href="#">Desktop</a></li>
-                            <li><a href="#">Commerces partenaires</a></li>
-                            <li><a href="#">Devenir Coursier</a></li>
-                        </ul>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">Liens Utiles</h3>
+                            <ul class="list-unstyled f_list">
+                                <li><a href="#">Company</a></li>
+                                <li><a href="#">Desktop</a></li>
+                                <li><a href="#">Commerces partenaires</a></li>
+                                <li><a href="#">Devenir Coursier</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
-                        <h3 class="f-title f_600 t_color f_size_18">Aide</h3>
-                        <ul class="list-unstyled f_list">
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Term &amp; conditions</a></li>
-                            <li><a href="#">Reporting</a></li>
-                            <li><a href="#">Documentation</a></li>
-                            <li><a href="#">Support Policy</a></li>
-                            <li><a href="#">Nous contacter</a></li>
-                        </ul>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">Aide</h3>
+                            <ul class="list-unstyled f_list">
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Term &amp; conditions</a></li>
+                                <li><a href="#">Reporting</a></li>
+                                <li><a href="#">Documentation</a></li>
+                                <li><a href="#">Support Policy</a></li>
+                                <li><a href="#">Nous contacter</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
-                        <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
-                        <div class="f_social_icon">
-                            <a class="fab fa-facebook" onclick=" window.open('https://www.facebook.com/heddelivery','_blank')"></a>
-                            <a class="fab fa-instagram" onclick=" window.open('https://www.instagram.com/hedelivery_/?hl=fr','_blank')"></a>
-                            <a class="fab fa-whatsapp" href="#"></a>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
+                            <div class="f_social_icon">
+                                <a class="fab fa-facebook" onclick=" window.open('https://www.facebook.com/heddelivery','_blank')"></a>
+                                <a class="fab fa-instagram" onclick=" window.open('https://www.instagram.com/hedelivery_/?hl=fr','_blank')"></a>
+                                <a class="fab fa-whatsapp" href="#"></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="footer_bg">
+                <div class="footer_bg_one"></div>
+                <div class="footer_bg_two"></div>
+            </div>
         </div>
-        <div class="footer_bg">
-            <div class="footer_bg_one"></div>
-            <div class="footer_bg_two"></div>
-        </div>
-    </div>
-    <div class="footer_bottom">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-sm-7">
-                    <p class="mb-0 f_400">© HighDeliveryExpress Inc..2020 All rights reserved.</p>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-sm-7">
+                        <p class="mb-0 f_400">© HighDeliveryExpress Inc..2020 All rights reserved.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
+
+    <!-- ################# !! END OF footer !!################# -->
+
 </body>
 
 <script >
 function openConnexionForm() {
   document.getElementById("myForm").style.display = "block";
+  document.getElementById("myRegisterForm").style.display = "none";
 }
 function closeConnexionForm() {
   document.getElementById("myForm").style.display = "none";
+}
+function openForm() {
+  document.getElementById("myRegisterForm").style.display = "block";
+  document.getElementById("myForm").style.display = "none";
+}
+function closeForm() {
+  document.getElementById("myRegisterForm").style.display = "none";
 }
 </script>
 
 
 </html>
 
+<!-- ################# !! END OF file !!################# -->
