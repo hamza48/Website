@@ -6,7 +6,8 @@ urlpatterns = [
         #Leave as empty string for base url
 	path('', views.home, name="home"),
 	path('loggin', views.logginUser, name="logginUser"),
-	path('logout',views.logout, name = 'logout'),
-	path('profile', views.profile, name = 'profile'),
-	path('register', views.register, name = 'register'),
+	path('logout',views.logout, name='logout'),
+	path('profile', views.profile, name='profile'),
+	path('register', views.register, name='register'),
+	path('Verify_token', views.Verify_token, name='Verify_token')
 ]

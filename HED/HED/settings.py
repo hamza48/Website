@@ -54,7 +54,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 ROOT_URLCONF = 'HED.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -84,7 +83,12 @@ DATABASES = {
     }
 }
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'hedelivey.oujda.informations@gmail.com'
+EMAIL_HOST_PASSWORD = '0536523525'
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 

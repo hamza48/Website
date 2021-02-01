@@ -19,7 +19,6 @@
 
 
 <body>
-
 <div class="page_container">
     <img alt="logo"  src="{% static 'images/logoHED.png' %}" style="float:right;width:280px;height:200px;">
     {% if connected %}
@@ -79,7 +78,7 @@
             {% endfor %}
         </ul>
         {% endif %}
-    </div>
+</div>
 
     <!-- ################# !! END OF form-popup !!################# -->
 
@@ -106,12 +105,42 @@
             <label for="pswRegistration2"><b>Password</b></label>
             <input id = "pswRegistration2" name="pswRegistration2" placeholder="ressaisir le mot de passe" required type="password">
 
-            <button class="btn" type="submit" >s'inscrire</button>
+            <button id="submit_registration" class="btn" type="submit" >s'inscrire</button>
             <button class="btn cancel" onclick="closeForm()" type="button">Close</button>
         </form>
-        {% endblock %}
-
     </div>
+
+
+{% if user_mail %}
+<!-- The Modal -->
+<div id="myModal" class="modal" style ="display:block">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>le code de verification a été envoyé à l'adresse mail : {{user_mail }}
+       cliquez sur Connexion pour pouvoir le saisir !  </p>
+  </div>
+</div>
+{% endif %}
+
+{% if token_verified %}
+<!-- The Modal -->
+<div id="myModal" class="modal" style ="display:block">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>votre compte a bien été activé, vous pouvez maintenant vous connectez </p>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
+
+
+
+
+
+
+
 
     <!--
     #####################################################################
@@ -157,7 +186,7 @@
                         <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
                             <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
                             <div class="f_social_icon">
-                                <a class="fab fa-facebook" onclick=" window.open('https://www.facebook.com/heddelivery','_blank')"></a>
+                                <a class="fab fa-facebook" onclick=" window.open('https://www.facebook.com/Hedelivery-103030651605198/','_blank')"></a>
                                 <a class="fab fa-instagram" onclick=" window.open('https://www.instagram.com/hedelivery_/?hl=fr','_blank')"></a>
                                 <a class="fab fa-whatsapp" href="#"></a>
                             </div>
@@ -185,7 +214,8 @@
 
 </body>
 
-<script >
+<script>
+
 function openConnexionForm() {
   document.getElementById("myForm").style.display = "block";
   document.getElementById("myRegisterForm").style.display = "none";
@@ -193,6 +223,11 @@ function openConnexionForm() {
 function closeConnexionForm() {
   document.getElementById("myForm").style.display = "none";
 }
+
+function closeMessageAlert() {
+  document.getElementById("messageAlert").style.display = "none";
+}
+
 function openForm() {
   document.getElementById("myRegisterForm").style.display = "block";
   document.getElementById("myForm").style.display = "none";
@@ -200,6 +235,33 @@ function openForm() {
 function closeForm() {
   document.getElementById("myRegisterForm").style.display = "none";
 }
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("submit_registration");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
 </script>
 
 
