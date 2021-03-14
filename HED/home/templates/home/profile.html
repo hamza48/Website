@@ -9,40 +9,105 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
     <link href="//db.onlinewebfonts.com/c/49e02ac686207bfe0490c93f2918c575?family=LemonYellowSunW00-Regular" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
-
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
-
     <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 
 </head>
 
-<body>
+<form>
 
 <div class="page_container">
     <img src="{% static 'images/logoHED.png' %}"  alt="logo" style="float:right;width:280px;height:200px;">
     <a class="btn_avatar fa"  alt="avatar" style="left : 30px; top : 2px;"></a>
     <a class="avatar_name"style=" left : -30px; top : 30px;">{{ first_name }}</a>
+    <form action="{% url 'logged_in' %}" method="GET">
+        <button class="astext"  style=" position:relative; left : 150px;">Accueil</button>
+    </form>
+    <button class="astext" style=" position:relative; left : 250px; top : -25px;">Mes commandes</button>
+    <a onClick="document.getElementById('logoutform').submit()">
+    <button type="button"  class="astext" style=" position:relative; left : 320px; top : -25px;">Deconnexion</button></a>
+    <form id="logoutform" method="POST" action="{% url 'logout_view' %}">
+    {% csrf_token %}
+    <input type="hidden">
+    </form>
 </div>
-<a class="box_profile"style=" width: 500px; left : 100px; top : 0px;"></a>
-<div class="Page_profile_center" style=" width:300px; height:400px;">
-
-    <a class="avatar_name"style=" left : 100px; top : -20px;">Nom et Prenom</a>
-    <p {{ first_name }} {{ last_name }}></p>
-    <!--
-    <a class="avatar_name"style=" left : 200px; top : -20px;">Email</a>
-    <a class="box_profile" style="left : 200px; top : 0px;">{{ email }}</a>
-    <a class="avatar_name"style=" left : 200px; top : -20px;">Contact</a>
-    <a class="box_profile" style="left : 200px; top : 0px;">{{telephone}}</a>
-    <a class="avatar_name"style=" left : 200px; top : -20px;">Adresse</a>
-    <a class="box_profile" style="left : 200px; top : 0px;">{{Adresse}}</a>-->
+<div class="page_center_container" >
+    <form action="{% url 'UpdateUserInfo' %}"  method = "POST" >
+            {% csrf_token %}
+            {{ form.as_p }}
+    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12" style = "position:relative; left : 180px;">
+    <div class="card h-100">
+	    <div class="card-body">
+		    <div class="row gutters">
+			    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				    <h6 class="mb-2 text-primary">Informations Personnelles </h6>
+			    </div>
+			    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="fullName">Nom et prenom</label>
+					<input type="text" class="form-control" id="fullName"  value="{{ first_name }} {{ last_name}}" disabled>
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="eMail">Email</label>
+					<input type="email" class="form-control" id="eMail" value="{{ email}}" disabled>
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="phone">Telephone</label>
+					<input type="text" name ="phone" class="form-control" id="phone" value="{{user.client.Telephone}}">
+				</div>
+			</div>
+		</div>
+		<div class="row gutters">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<h6 class="mt-3 mb-2 text-primary">Addresse</h6>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="Street">Rue</label>
+					<input type="name" class="form-control" id="Street" >
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="ciTy">Ville</label>
+					<input type="name" class="form-control" id="ciTy" >
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="sTate">Complément d'adresse</label>
+					<input type="text" class="form-control" id="sTate" >
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="zIp">Code Postal</label>
+					<input type="text" class="form-control" id="zIp" >
+				</div>
+			</div>
+		</div>
+		<div class="row gutters">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<div class="text-right">
+					<button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+					<button type="submit" id="submit" name="submit" class="btn btn-primary">Update</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-
-
+</div>
+</div>
+</div>
+</form>
 </div>
      <footer class="new_footer_area bg_color">
     <div class="new_footer_top">

@@ -1,14 +1,17 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth import logout as django_logout
-from django.http import HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from .models import Client
 from random import randint
 from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
 import datetime
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+
+
+
 
 
 
@@ -21,29 +24,50 @@ EMAIL_ALREADY_EXIST = """L'email saisi existe deja """
 
 def home(request):
     context = {}
+    logout(request)
     # This check is made to  logged out the user when he request home
     return render(request, 'home/main.html', context)
 
+@login_required
+def Pharmacy(request):
+    user_loggedin = request.user
+    context = {}
+    return render(request, 'home/Pharmacie.html', context)
 
 ###############################################################
 # This class "logout"  to loggout a user,No treatement needed #
 ###############################################################
 
-
-def logout(request):
+def logout_view(request):
+    context = {}
     logout(request)
-    return render(request, 'home/main.html')
+    #return redirect('home')
+    return render(request, 'home/main.html', context)
+
+
+@login_required
+def logged_in(request):
+    context = {}
+    return render(request, 'home/register.html', context)
 
 
 
 
+
+def csrf_failure(request, reason=""):
+    ctx = {}
+    return render(request,'home/main.html', ctx)
 
 ###########################################################
 # This class "register" is made to fetch user's input     #
 # in order to login him if he has an account              #
 # it calls ClientForm from forms.py file                  #
 ###########################################################
+
+@csrf_exempt
 def logginUser(request):
+    print("Im in logginUser view")
+    context = {}
     if request.method == 'POST':  # data sent by user
         email = request.POST['email']
         psw = request.POST['psw']
@@ -51,49 +75,73 @@ def logginUser(request):
             client_object = User.objects.get(email=email)
             if(client_object.client.pswRegistration == psw):
                 if(client_object.client.mail_verified):
-                    user = authenticate(request, username=client_object.username, password=client_object.client.pswRegistration)
+                    user = authenticate(request, username=client_object.username,
+                                        password=client_object.client.pswRegistration)
                     if user is not None:
                         login(request, user)
-                        context = {
-                            "first_name": client_object.first_name,
-                        }
-                        return render(request, 'home/register.html', context)
+                        return redirect('logged_in')
+                        #return render(request, 'home/register.html', context)
                     else:
                         messages.error(request, NO_ACCOUNT_FOUND)
-                        return render(request, 'home/main.html')
-                    # Return an 'invalid login' error message.
+                        return render(request, 'home/main.html', context)
+                        # Return an 'invalid login' error message.
 
                 else:
                     request.session['token'] = client_object.client.generator_token
+                    request.session['user_id'] = client_object.id
                     return render(request, 'home/confirmRegistration.html')
             else :
                 messages.error(request, USERNAME_OR_PASSWORD_WRONG)
         else :
             messages.error(request, NO_ACCOUNT_FOUND)
-    else :
-        return render(request, 'home/main.html')
+
+
+    return render(request, 'home/main.html', context)
 
 ###########################################################
 # This class "profile" is made to display for the user    #
 # his informations, orders , or to let him loggout          #
 ###########################################################
+@login_required
 def profile(request):
-    current_user = request.user
-    context = {
-        "first_name" : current_user.first_name,
-        "last_name"  : current_user.last_name,
-        "email"      : current_user.email,
-        "telephone"  : current_user.client.Telephone,
-        "Adresse"    : current_user.client.adresse
-    }
-    return render(request, 'home/profile.html', context)
+    if request.method == 'POST':  # data sent by user
+        current_user = request.user
+        context = {
+            "first_name" : current_user.first_name,
+            "last_name"  : current_user.last_name,
+            "email"      : current_user.email,
+            "telephone"  : current_user.client.Telephone,
+            "Adresse"    : current_user.client.adresse
+        }
+        print(context)
+        return render(request, 'home/profile.html', context)
+    else :
+        return redirect('home')
+
+###########################################################
+# This class "UpdateUserInfo" is made to update user info #
+# in order to store all informations about him like mobile#
+# phone and adress                                        #
+#       #
+###########################################################
+
+@login_required
+def UpdateUserInfo(request):
+    if request.method == 'POST':  # data sent by user
+        mobile_phone = request.POST['phone']
+        user = request.user
+        user.client.Telephone = mobile_phone
+        user.save()
+        return redirect('logged_in')
+
+
+
 ###########################################################
 # This class "inscription" is made to fetch user's input  #
 # in order to register him if no user with the same mail  #
 # already exist.                                          #
 # it calls ClientRegistrationForm from forms.py file      #
 ###########################################################
-
 
 def register(request):
     passwordAreCorrect = False
@@ -126,6 +174,10 @@ def register(request):
 
         if(passwordAreCorrect & emailIsNotUsed) :
             username = Last_name + First_name
+            # Cannot register a new user with an existing username,
+            # so we add a random number to username if found
+            if  User.objects.filter(username=username).exists():
+                username = username + str(randint(0,100))
             user = User.objects.create_user(username = username,password = pswRegistration1 , email = emailRegistration,
                                             first_name = First_name, last_name = Last_name)
             user.client.mail_verified = False
@@ -153,17 +205,17 @@ def register(request):
 
 ##############  END OF FILE   #####################
 
-
 def Verify_token(request):
     if request.method == 'POST':  # data sent by user
         token_input = request.POST['token']
-    current_user = request.user
-    if(current_user.client.generator_token == token_input):
-
-        current_user.client.mail_verified = True
-        current_user.save()
+    token_generated = request.session.get('token')
+    user_id      =  request.session.get('user_id')
+    if(token_generated == token_input):
+        user_object = User.objects.get(id=user_id)
+        user_object.client.mail_verified = True
+        user_object.save()
         context = {
-            "token_verified" : current_user.client.mail_verified,
+            "token_verified" : user_object.client.mail_verified,
         }
     else:
         context = {

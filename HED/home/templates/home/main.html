@@ -31,18 +31,25 @@
 
 <div class="page_center_container">
     <p class="title"> Une Envie à Oujda ? <br> On vous livre </p>
-    <a class="btn_gift fa" href="#" style="left: 350px; top : 70px;"></a>
+    <a class="btn_gift fa" onclick="openConnexionForm()"  style="left: 350px; top : 70px;"></a>
     <p class="butonSubtitles" style="left : 355px; top: 85px">Un cadeau </p>
-    <a class="btn_delivery fa" href="#" style="left: 560px; top: -90px;" ></a>
+    <a class="btn_delivery fa" onclick="openConnexionForm()"  style="left: 560px; top: -90px;" ></a>
     <p class="butonSubtitles" style="left : 565px; top: -75px">Une course </p>
-    <a class="btn_food fa" href="#" style="left: 770px; top: -250px;" ></a>
+    <a class="btn_food fa" onclick="openConnexionForm()"  style="left: 770px; top: -250px;" ></a>
     <p class="butonSubtitles" style="left : 780px; top: -235px">J'ai faim </p>
-    <a class="btn_pharmacy fa" href="#" style="left: 130px; top: -407px;" ></a>
+    <a class="btn_pharmacy fa" onclick="openConnexionForm()" style="left: 130px; top: -407px;" ></a>
     <p class="butonSubtitles" style="left : 138px; top: -387px">Pharmacie</p>
-    <a class="btn_attention fa" href="#" style="left: 970px; top: -570px;" ></a>
+    <a class="btn_attention fa" onclick="openConnexionForm()" style="left: 970px; top: -570px;" ></a>
     <p class="butonSubtitles" style="left : 975px; top: -555px">En panne ?</p>
 </div>
-
+<!-- The Modal -->
+<div id="login_needded" class="modal" style ="display:none">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p> Veuillez vous connectez ou vous inscrire pour pouvoir passer une commande </p>
+  </div>
+</div>
 <!--
 ##################################################################
 # This Part (Form-popup) is made to display the logging form,    #
@@ -51,7 +58,7 @@
 # error messages to be corrected by user, and logging            #
 ##################################################################
 -->
-
+{% block content %}
 {% if messages %}
 <div class="form-popup" id="myForm" style ="display:block">
     {% else %}
@@ -59,6 +66,7 @@
         {% endif %}
         <form action="{% url 'logginUser' %}" class="form-container" method = "POST" >
             {% csrf_token %}
+            {{form}}
 
             <h1>Login</h1>
 
@@ -83,7 +91,6 @@
     <!-- ################# !! END OF form-popup !!################# -->
 
 
-    {% block content %}
     <div class="formRegister-popup" id="myRegisterForm" style ="display:none">
 
         <form action="{% url 'register' %}" class="form-container" method = "POST" >
@@ -111,24 +118,27 @@
     </div>
 
 
+
 {% if user_mail %}
 <!-- The Modal -->
 <div id="myModal" class="modal" style ="display:block">
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>le code de verification a été envoyé à l'adresse mail : {{user_mail }}
+    <span class="close"></span>
+    <p>le code de verification a été envoyé à l'adresse mail : {{user_mail}}
        cliquez sur Connexion pour pouvoir le saisir !  </p>
   </div>
 </div>
 {% endif %}
+
+
 
 {% if token_verified %}
 <!-- The Modal -->
 <div id="myModal" class="modal" style ="display:block">
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span class="close"></span>
     <p>votre compte a bien été activé, vous pouvez maintenant vous connectez </p>
   </div>
 </div>
@@ -232,6 +242,8 @@ function openForm() {
   document.getElementById("myRegisterForm").style.display = "block";
   document.getElementById("myForm").style.display = "none";
 }
+
+
 function closeForm() {
   document.getElementById("myRegisterForm").style.display = "none";
 }
