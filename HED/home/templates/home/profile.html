@@ -18,7 +18,6 @@
 
 </head>
 
-<form>
 
 <div class="page_container">
     <img src="{% static 'images/logoHED.png' %}"  alt="logo" style="float:right;width:280px;height:200px;">
@@ -35,11 +34,10 @@
     <input type="hidden">
     </form>
 </div>
-<div class="page_center_container" >
     <form action="{% url 'UpdateUserInfo' %}"  method = "POST" >
             {% csrf_token %}
             {{ form.as_p }}
-    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12" style = "position:relative; left : 180px;">
+    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
     <div class="card h-100">
 	    <div class="card-body">
 		    <div class="row gutters">
@@ -72,32 +70,32 @@
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 				<div class="form-group">
 					<label for="Street">Rue</label>
-					<input type="name" class="form-control" id="Street" >
+					<input type="name" name="adresse" class="form-control" id="Street" value="{{user.client.adresse}}">
 				</div>
 			</div>
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 				<div class="form-group">
 					<label for="ciTy">Ville</label>
-					<input type="name" class="form-control" id="ciTy" >
+					<input type="name" name="city" class="form-control" id="ciTy" value="{{user.client.ville}}">
 				</div>
 			</div>
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 				<div class="form-group">
 					<label for="sTate">Complément d'adresse</label>
-					<input type="text" class="form-control" id="sTate" >
+					<input type="text" name="moreInfo" class="form-control" id="sTate" value="{{user.client.complementAdresse}}" >
 				</div>
 			</div>
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 				<div class="form-group">
 					<label for="zIp">Code Postal</label>
-					<input type="text" class="form-control" id="zIp" >
+					<input type="text" name="zipCode" class="form-control" id="zIp"value="{{user.client.codePostale}}" >
 				</div>
 			</div>
 		</div>
 		<div class="row gutters">
 			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 				<div class="text-right">
-					<button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+					<button type="button" onClick="window.location.reload();" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
 					<button type="submit" id="submit" name="submit" class="btn btn-primary">Update</button>
 				</div>
 			</div>
@@ -108,7 +106,6 @@
 </div>
 </div>
 </form>
-</div>
      <footer class="new_footer_area bg_color">
     <div class="new_footer_top">
         <div class="container">

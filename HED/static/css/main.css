@@ -79,6 +79,7 @@ transition: all 0.3s ease 0s;
   height : 800px;
   margin-left: auto;
   margin-right: auto;
+  font-family: "LemonYellowSunW00-Regular", regular;
 }
 
 .confirm_registration_container {
@@ -567,6 +568,41 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
+.information {
+    background:none;
+    font-family: "LemonYellowSunW00-Regular", regular;
+    text-decoration: underline;
+    border:none;
+    color : #000;
+    margin:0;
+    padding:4px;
+    cursor: pointer;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 220px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.information:hover .tooltiptext {
+  visibility: visible;
+}
+
+.astext:hover .tooltiptext {
+  visibility: visible;
+}
+
+
+
 /*FOrm for registration*/
 /* The popup form - hidden by default */
 .formRegister-popup {
@@ -652,4 +688,25 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 5px;
     border: 0;
     margin-bottom: 1rem;
+}
+
+########## This part is made for pharmacy page ##########
+upload_file {
+	display: block;
+	width: 60vw;
+	max-width: 300px;
+	margin: 0 auto;
+	background-color: slateblue;
+	border-radius: 2px;
+	font-size: 1em;
+	line-height: 2.5em;
+	text-align: center;
+}
+
+upload_file:hover {
+	background-color: cornflowerblue;
+}
+
+upload_file:active {
+	background-color: mediumaquamarine;
 }

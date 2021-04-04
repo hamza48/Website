@@ -21,12 +21,9 @@
 <body>
 <div class="page_container">
     <img alt="logo"  src="{% static 'images/logoHED.png' %}" style="float:right;width:280px;height:200px;">
-    {% if connected %}
-    <!-- Don't display register and logging buttons  TODO ! -->
-    {% else %}
     <button class="button_register" onclick="openForm()" style="left : 20px; top : 10px;"><span>s'inscrire </span></button>
     <button class="button_register" onclick="openConnexionForm()" style="left : 20px; top : 10px;"><span>connexion </span></button>
-    {% endif %}
+
 </div>
 
 <div class="page_center_container">
@@ -42,14 +39,6 @@
     <a class="btn_attention fa" onclick="openConnexionForm()" style="left: 970px; top: -570px;" ></a>
     <p class="butonSubtitles" style="left : 975px; top: -555px">En panne ?</p>
 </div>
-<!-- The Modal -->
-<div id="login_needded" class="modal" style ="display:none">
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p> Veuillez vous connectez ou vous inscrire pour pouvoir passer une commande </p>
-  </div>
-</div>
 <!--
 ##################################################################
 # This Part (Form-popup) is made to display the logging form,    #
@@ -59,11 +48,7 @@
 ##################################################################
 -->
 {% block content %}
-{% if messages %}
-<div class="form-popup" id="myForm" style ="display:block">
-    {% else %}
     <div class="form-popup" id="myForm" style ="display:none">
-        {% endif %}
         <form action="{% url 'logginUser' %}" class="form-container" method = "POST" >
             {% csrf_token %}
             {{form}}
@@ -79,13 +64,6 @@
             <button class="btn" type="submit" >Login</button>
             <button class="btn cancel" onclick="closeConnexionForm()" type="button">Close</button>
         </form>
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li class="{{ message.tags }}">{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
 </div>
 
     <!-- ################# !! END OF form-popup !!################# -->
@@ -116,41 +94,22 @@
             <button class="btn cancel" onclick="closeForm()" type="button">Close</button>
         </form>
     </div>
-
-
-
-{% if user_mail %}
-<!-- The Modal -->
-<div id="myModal" class="modal" style ="display:block">
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close"></span>
-    <p>le code de verification a été envoyé à l'adresse mail : {{user_mail}}
-       cliquez sur Connexion pour pouvoir le saisir !  </p>
-  </div>
-</div>
-{% endif %}
-
-
-
-{% if token_verified %}
-<!-- The Modal -->
-<div id="myModal" class="modal" style ="display:block">
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close"></span>
-    <p>votre compte a bien été activé, vous pouvez maintenant vous connectez </p>
-  </div>
-</div>
-{% endif %}
 {% endblock %}
 
-
-
-
-
-
-
+{% if messages %}
+<!-- The Modal -->
+<div id="myModal" class="modal" style ="display:block">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close"></span>
+    <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+  </div>
+</div>
+{% endif %}
 
     <!--
     #####################################################################
@@ -234,9 +193,6 @@ function closeConnexionForm() {
   document.getElementById("myForm").style.display = "none";
 }
 
-function closeMessageAlert() {
-  document.getElementById("messageAlert").style.display = "none";
-}
 
 function openForm() {
   document.getElementById("myRegisterForm").style.display = "block";
