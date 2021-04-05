@@ -1,0 +1,712 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+@import url(https://fonts.googleapis.com/css?family=Karla:400,400italic,700,700italic);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url(//db.onlinewebfonts.com/c/49e02ac686207bfe0490c93f2918c575?family=LemonYellowSunW00-Regular);
+
+body{
+	background-color: hsl(0, 0%, 98%);
+	background:linear-gradient(#FF2626, #DB0000);
+    height: 100vh;
+    width: 100%;
+    min-width: 1100px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Signup button*/
+.button_register {
+background-color: #FFFFFF;
+color: #000000 !important;
+text-transform: uppercase;
+font-family: "LemonYellowSunW00-Regular", regular;
+font-weight:bold;
+position :relative;
+background: #FFF500;
+padding: 20px;
+border: 4px solid #000000 !important;
+border-radius: 6px;
+display: inline-block;
+transition: all 0.3s ease 0s;
+}
+
+.button_register:hover {
+border-radius: 50px;
+border-color: #000000 !important;
+transition: all 0.3s ease 0s;
+}
+
+.butonSubtitles {
+   color: #FFFFFF;
+   font-size: 25px;
+   position : relative;
+   max-width: 100px;
+   text-shadow : 3px 3px #000000;
+   font-family: "LemonYellowSunW00-Regular", regular;
+}
+.title {
+    color: #FFFFFF;
+    text-align: center;
+    font-family: "LemonYellowSunW00-Regular", regular;
+    top: 10px;
+    left: 200px;
+    font-size: 89px;
+}
+.title:hover
+{
+    text-shadow : 4px 4px #000000;
+}
+
+.Message {
+    color: #FFFFFF;
+    text-align: center;
+    font-family: "LemonYellowSunW00-Regular", regular;
+    top: 10px;
+    left: 200px;
+    font-size: 29px;
+    text-shadow : 2px 2px #000000;
+}
+
+.page_container {
+  position: relative;
+  height : 200px;
+}
+
+.page_center_container {
+  position: relative;
+  height : 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "LemonYellowSunW00-Regular", regular;
+}
+
+.confirm_registration_container {
+ position: relative;
+ height: 200px;
+}
+
+/*Those services are made for buttons of login and register*/
+.main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  color: #FFD800;
+  /* Try using a background image
+  background: url('images/frontPageBackground.jpg');*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: all 1s ease;
+  padding-top: 10px;
+}
+.main:before {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #FFD800;
+  opacity: 0.2;
+  filter: alpha(opacity=90);
+}
+.main-text {
+  top: 20%;
+  left: auto;
+  right: auto;
+  position: relative;
+  color: #FFD800;
+}
+
+
+/*Those services are made for search bar */
+
+
+.new_footer_area {
+    background: #FFD800;
+    font-family: "LemonYellowSunW00-Regular", regular;
+}
+
+
+.new_footer_top {
+    padding: 120px 0px 270px;
+    position: relative;
+      overflow-x: hidden;
+}
+.new_footer_area .footer_bottom {
+    padding-top: 5px;
+    padding-bottom: 50px;
+    bottom:0;
+}
+.footer_bottom {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    color: #000000;
+    padding: 27px 0px;
+}
+.new_footer_top .company_widget p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 28px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+.new_footer_top .company_widget .f_subscribe_two .btn_get {
+    border-width: 1px;
+    margin-top: 20px;
+}
+.btn_get_two:hover {
+    background: transparent;
+    color: #5e2ced;
+}
+.btn_get:hover {
+    color: #fff;
+    background: #000000;
+    border-color: #000000;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
+    text-decoration: none;
+    outline: none;
+}
+
+
+
+.new_footer_top .f_widget.about-widget .f_list li a:hover {
+    color: #FFFFFF;
+}
+.new_footer_top .f_widget.about-widget .f_list li {
+    margin-bottom: 11px;
+}
+.f_widget.about-widget .f_list li:last-child {
+    margin-bottom: 0px;
+}
+.f_widget.about-widget .f_list li {
+    margin-bottom: 15px;
+}
+.f_widget.about-widget .f_list {
+    margin-bottom: 0px;
+}
+.new_footer_top .f_social_icon a {
+    width: 44px;
+    height: 44px;
+    line-height: 43px;
+    background: transparent;
+    border: 1px solid #e2e2eb;
+    font-size: 24px;
+}
+.f_social_icon a {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    font-size: 14px;
+    line-height: 45px;
+    color: #858da8;
+    display: inline-block;
+    background: #ebeef5;
+    text-align: center;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+.ti-facebook:before {
+    content: "\e741";
+}
+.ti-twitter-alt:before {
+    content: "\e74b";
+}
+.ti-vimeo-alt:before {
+    content: "\e74a";
+}
+.ti-pinterest:before {
+    content: "\e731";
+}
+
+.btn_get_two {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: #000000;
+    border-color: #000000;
+    color: #fff;
+}
+
+.btn_get_two:hover {
+    background: transparent;
+    color: #000000;
+}
+
+.new_footer_top .f_social_icon a:hover {
+    background: #000000;
+    border-color: #000000;
+  color:white;
+}
+.new_footer_top .f_social_icon a + a {
+    margin-left: 4px;
+}
+.new_footer_top .f-title {
+    margin-bottom: 30px;
+    color: #263b5e;
+}
+.f_600 {
+    font-weight: 600;
+}
+.f_size_18 {
+    font-size: 18px;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #4b505e;
+}
+.new_footer_top .f_widget.about-widget .f_list li a {
+    color: #000000;
+    font-family: "LemonYellowSunW00-Regular", regular;
+}
+
+
+.new_footer_top .footer_bg {
+    position: absolute;
+    bottom: 0;
+    background: url("http://droitthemes.com/html/saasland/img/seo/footer_bg.png") no-repeat scroll center 0;
+    width: 100%;
+    height: 266px;
+}
+
+.new_footer_top .footer_bg .footer_bg_one {
+    background: url("https://1.bp.blogspot.com/-mvKUJFGEc-k/XclCOUSvCnI/AAAAAAAAUAE/jnBSf6Fe5_8tjjlKrunLBXwceSNvPcp3wCLcBGAsYHQ/s1600/volks.gif") no-repeat center center;
+    width: 330px;
+    height: 105px;
+  background-size:100%;
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    -webkit-animation: myfirst 22s linear infinite;
+    animation: myfirst 22s linear infinite;
+}
+
+.new_footer_top .footer_bg .footer_bg_two {
+    background: url("https://1.bp.blogspot.com/-hjgfxUW1o1g/Xck--XOdlxI/AAAAAAAAT_4/JWYFJl83usgRFMvRfoKkSDGd--_Sv04UQCLcBGAsYHQ/s1600/cyclist.gif") no-repeat center center;
+    width: 88px;
+    height: 100px;
+  background-size:100%;
+    bottom: 0;
+    left: 38%;
+    position: absolute;
+    -webkit-animation: myfirst 30s linear infinite;
+    animation: myfirst 30s linear infinite;
+}
+
+
+
+@-moz-keyframes myfirst {
+  0% {
+    left: -25%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@-webkit-keyframes myfirst {
+  0% {
+    left: -25%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes myfirst {
+  0% {
+    left: -25%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/*************footer End*****************/
+/*************button of food start*****************/
+
+.btn_food {
+  background-color: #FFD800; /* Blue background */
+  border: 4px solid #000 !important;
+  border: none; /* Remove borders */
+  color: #000000; /* White text */
+  position : relative;
+  padding: 12px 16px; /* Some padding */
+  font-size: 30px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  height: 100px;
+  margin : 0 auto;
+  width: 100px;
+  background-image : url('../images/dinner.png');
+  background-size : 100%;
+  border-radius : 6px;
+}
+
+/* Darker background on mouse-over */
+.btn_food:hover {
+  background-color: #FFFFFF;
+  color : #E47900;
+  border-radius : 20px;
+}
+
+
+
+
+/*************button of food End*****************/
+
+/*************button of delivery start*****************/
+
+.btn_delivery {
+  background-color: #FFD800; /* Blue background */
+  border: 4px solid #000 !important;
+  color: #000000; /* White text */
+  position : relative;
+  padding: 12px 16px; /* Some padding */
+  font-size: 30px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  height: 100px;
+  margin : 0 auto;
+  width: 100px;
+  background-image : url('../images/scooter.png');
+  background-size : 100%;
+  border-radius : 6px;
+}
+
+/* Darker background on mouse-over */
+.btn_delivery:hover {
+  background-color: #FFFFFF;
+  color : #E47900;
+  border-radius : 20px;
+}
+/*************button of delivery End*****************/
+/*************button of gift start*****************/
+
+.btn_gift {
+  background-color: #FFD800; /* yellow background */
+  border: 4px solid #000 !important;
+  color: #000000; /* White text */
+  position : relative;
+  font-size: 30px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  height: 100px;
+  width: 100px;
+  margin : 0 auto;
+  background-image : url('../images/gift.png');
+  background-size : 100%;
+  border-radius : 6px;
+}
+
+/* Darker background on mouse-over */
+.btn_gift:hover {
+  background-color: #FFFFFF;
+  color : #E47900;
+  border-radius : 20px;
+}
+/*************button of gift End*****************/
+/*************button of pharmacy start*****************/
+
+.btn_pharmacy {
+  background-color: #FFD800; /* yellow background */
+  border: 4px solid #000 !important;
+  color: #000000; /* White text */
+  position : relative;
+  font-size: 30px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  height: 100px;
+  width: 100px;
+  margin : 0 auto;
+  background-image : url('../images/pharmacy.png');
+  background-size : 100%;
+  border-radius : 6px;
+}
+
+/* Darker background on mouse-over */
+.btn_pharmacy:hover {
+  background-color: #FFFFFF;
+  color : #E47900;
+  border-radius : 20px;
+}
+/*************button of attention End*****************/
+/*************button of attention start*****************/
+.btn_attention{
+  background-color: #FFD800; /* yellow background */
+  border: 4px solid #000 !important;
+  color: #000000; /* White text */
+  position : relative;
+  font-size: 30px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  height: 100px;
+  width: 100px;
+  margin : 0 auto;
+  background-image : url('../images/attention.png');
+  background-size : 100%;
+  border-radius : 6px;
+}
+
+/* Darker background on mouse-over */
+.btn_attention:hover {
+  background-color: #FFFFFF;
+  color : #E47900;
+  border-radius : 20px;
+}
+/*************button of attention End*****************/
+/*************button of connexion that appear a popup******/
+/* Button used to open the contact form - fixed at the bottom of the page */
+.Page_profile_center {
+  position: relative;
+  height : 300px;
+}
+
+
+.box_profile {
+  background-color: #FFD800;
+  position: relative;
+  font-family: "LemonYellowSunW00-Regular", regular;
+  border: 3px solid #000000;
+  border-radius : 20px;
+  color: #000000;
+  padding: 15px;
+  font-size: 25px;
+  text-shadow : 1px 1px #FFFFFF;
+}
+
+
+/* The popup form - hidden by default */
+.form-popup {
+  background-color: #FFD800;
+  font-family: "LemonYellowSunW00-Regular", regular;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #000000;
+  border-radius : 20px;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: #FFD800;
+  border-radius : 20px;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 15px 0;
+  border: 1px solid #000000;
+  border-radius : 20px;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #18A81E;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+/*AVATAR AFTER CONNECTION*/
+.btn_avatar {
+  background-color: #FFD800; /* yellow background */
+  position : relative;
+  font-size: 30px; /* Set a font size */
+  height: 60px;
+  width: 60px;
+  border: 2px solid #000000;
+  background-image : url('../images/avatar.png');
+  background-size : 100%;
+  border-radius : 20px;
+}
+.avatar_name {
+  background:none;
+  color: #FFFFFF;
+  font-family: "LemonYellowSunW00-Regular";
+  text-shadow : 1px 1px #FFFFFF;
+  position : relative;
+  font-size: 25px; /* Set a font size */
+}
+.astext {
+    background:none;
+    font-family: "LemonYellowSunW00-Regular", regular;
+    text-decoration: underline;
+    border:none;
+    color : #FFFFFF;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+
+}
+
+.information {
+    background:none;
+    font-family: "LemonYellowSunW00-Regular", regular;
+    text-decoration: underline;
+    border:none;
+    color : #000;
+    margin:0;
+    padding:4px;
+    cursor: pointer;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 220px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.information:hover .tooltiptext {
+  visibility: visible;
+}
+
+.astext:hover .tooltiptext {
+  visibility: visible;
+}
+
+
+
+/*FOrm for registration*/
+/* The popup form - hidden by default */
+.formRegister-popup {
+  background-color: #FFD800;
+  font-family: "LemonYellowSunW00-Regular", regular;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #000000;
+  border-radius : 20px;
+  z-index: 9;
+}
+
+
+/* This modal  is made to display some popups to the user*/
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+/*######### This Part of css concerns profile.html only ########*/
+
+.account-settings .about {
+    margin: 2rem 0 0 0;
+    text-align: center;
+}
+.account-settings .about h5 {
+    margin: 0 0 15px 0;
+    color: #007ae1;
+}
+.account-settings .about p {
+    font-size: 0.825rem;
+}
+.form-control {
+    border: 1px solid #cfd1d8;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font-size: .825rem;
+    background: #ffffff;
+    color: #2e323c;
+}
+
+.card {
+    background: #ffffff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 0;
+    margin-bottom: 1rem;
+}
+
+########## This part is made for pharmacy page ##########
+upload_file {
+	display: block;
+	width: 60vw;
+	max-width: 300px;
+	margin: 0 auto;
+	background-color: slateblue;
+	border-radius: 2px;
+	font-size: 1em;
+	line-height: 2.5em;
+	text-align: center;
+}
+
+upload_file:hover {
+	background-color: cornflowerblue;
+}
+
+upload_file:active {
+	background-color: mediumaquamarine;
+}

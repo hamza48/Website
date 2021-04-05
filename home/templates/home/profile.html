@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>HED</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link href="//db.onlinewebfonts.com/c/49e02ac686207bfe0490c93f2918c575?family=LemonYellowSunW00-Regular" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
+</head>
+
+
+<div class="page_container">
+    <img src="{% static 'images/logoHED.png' %}"  alt="logo" style="float:right;width:280px;height:200px;">
+    <a class="btn_avatar fa"  alt="avatar" style="left : 30px; top : 2px;"></a>
+    <a class="avatar_name"style=" left : -30px; top : 30px;">{{ first_name }}</a>
+    <form action="{% url 'logged_in' %}" method="GET">
+        <button class="astext"  style=" position:relative; left : 150px;">Accueil</button>
+    </form>
+    <button class="astext" style=" position:relative; left : 250px; top : -25px;">Mes commandes</button>
+    <a onClick="document.getElementById('logoutform').submit()">
+    <button type="button"  class="astext" style=" position:relative; left : 320px; top : -25px;">Deconnexion</button></a>
+    <form id="logoutform" method="POST" action="{% url 'logout_view' %}">
+    {% csrf_token %}
+    <input type="hidden">
+    </form>
+</div>
+    <form action="{% url 'UpdateUserInfo' %}"  method = "POST" >
+            {% csrf_token %}
+            {{ form.as_p }}
+    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+	    <div class="card-body">
+		    <div class="row gutters">
+			    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				    <h6 class="mb-2 text-primary">Informations Personnelles </h6>
+			    </div>
+			    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="fullName">Nom et prenom</label>
+					<input type="text" class="form-control" id="fullName"  value="{{ first_name }} {{ last_name}}" disabled>
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="eMail">Email</label>
+					<input type="email" class="form-control" id="eMail" value="{{ email}}" disabled>
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="phone">Telephone</label>
+					<input type="text" name ="phone" class="form-control" id="phone" value="{{user.client.Telephone}}">
+				</div>
+			</div>
+		</div>
+		<div class="row gutters">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<h6 class="mt-3 mb-2 text-primary">Addresse</h6>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="Street">Rue</label>
+					<input type="name" name="adresse" class="form-control" id="Street" value="{{user.client.adresse}}">
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="ciTy">Ville</label>
+					<input type="name" name="city" class="form-control" id="ciTy" value="{{user.client.ville}}">
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="sTate">Complément d'adresse</label>
+					<input type="text" name="moreInfo" class="form-control" id="sTate" value="{{user.client.complementAdresse}}" >
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="zIp">Code Postal</label>
+					<input type="text" name="zipCode" class="form-control" id="zIp"value="{{user.client.codePostale}}" >
+				</div>
+			</div>
+		</div>
+		<div class="row gutters">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<div class="text-right">
+					<button type="button" onClick="window.location.reload();" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+					<button type="submit" id="submit" name="submit" class="btn btn-primary">Update</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+</form>
+     <footer class="new_footer_area bg_color">
+    <div class="new_footer_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                        <h3 class="f-title f_600 t_color f_size_18">Restez connecté(e)s</h3>
+                        <p>Ne ratez aucune nouveautées, offres, remises !</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+                        <h3 class="f-title f_600 t_color f_size_18">Liens Utiles</h3>
+                        <ul class="list-unstyled f_list">
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Desktop</a></li>
+                            <li><a href="#">Commerces partenaires</a></li>
+                            <li><a href="#">Devenir Coursier</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+                        <h3 class="f-title f_600 t_color f_size_18">Aide</h3>
+                        <ul class="list-unstyled f_list">
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Term &amp; conditions</a></li>
+                            <li><a href="#">Reporting</a></li>
+                            <li><a href="#">Documentation</a></li>
+                            <li><a href="#">Support Policy</a></li>
+                            <li><a href="#">Nous contacter</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+                        <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
+                        <div class="f_social_icon">
+                            <a class="fab fa-facebook" onclick=" window.open('https://www.facebook.com/Hedelivery-103030651605198/','_blank')"></a>
+                            <a class="fab fa-instagram" onclick=" window.open('https://www.instagram.com/hedelivery_/?hl=fr','_blank')"></a>
+                            <a class="fab fa-whatsapp" href="#"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_bg">
+            <div class="footer_bg_one"></div>
+            <div class="footer_bg_two"></div>
+        </div>
+    </div>
+    <div class="footer_bottom">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-sm-7">
+                    <p class="mb-0 f_400">© HighDeliveryExpress Inc..2020 All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+
+
+</html>
