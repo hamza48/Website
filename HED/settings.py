@@ -24,7 +24,7 @@ SECRET_KEY = ')ll$ts^kfe@!-i31k6k#yc!f&3m!_=2=pu_^rfk#s=+07ueo+o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.52', 'https://immense-reef-80142.herokuapp.com']
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', '192.168.1.52', 'https://immense-reef-80142.herokuapp.com']
 
 
 # Application definition
