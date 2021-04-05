@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 from django.contrib.auth.models import User
 import datetime
 from .models import Commande,Client
-from django.contrib.messages import get_messages
+from django.forms.models import model_to_dict
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from enum import Enum
@@ -337,8 +337,12 @@ def addingItem(request):
 def myOrders(request):
         current_user = request.user
         context = {}
-        service = current_user.client.service
-
+        orderOfUser = Commande.objects.filter(user=current_user)
+        orderOfUser.values_list()
+        for commande in orderOfUser:
+            print(commande.date)
+            print(commande.service)
+            print(commande.status)
 
         return redirect('Pharmacy')
 

@@ -31,7 +31,11 @@
         {% csrf_token %}
         <button class="astext"  style=" position:relative; left : 150px;">Profile</button>
     </form>
-    <button class="astext" style=" position:relative; left : 250px; top : -25px;">Mes commandes</button>
+    <form action="{% url 'myOrders' %}" method="POST">
+        {% csrf_token %}
+        <button class="astext" style=" position:relative; left : 250px; top : -25px;">Mes commandes</button>
+    </form>
+
     <a onClick="document.getElementById('logoutform').submit()">
     <button type="button"  class="astext" style=" position:relative; left : 320px; top : -25px;">Deconnexion</button></a>
     <form id="logoutform" method="POST" action="{% url 'logout_view' %}">
