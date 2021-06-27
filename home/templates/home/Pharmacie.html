@@ -18,68 +18,80 @@
 
 </head>
 
-
-<div class="page_container">
-    <img src="{% static 'images/logoHED.png' %}"  alt="logo" style="float:right;width:280px;height:200px;">
-    <a class="btn_avatar fa"  alt="avatar" style="left : 30px; top : 2px;"></a>
-    <a class="avatar_name"style=" left : -30px; top : 30px;">{{ request.user.first_name }}</a>
+<body>
+<div id="page_header_container">
+    <img src="{% static 'images/logoHED.png' %}"  alt="logo" width="250" height="250">
+    <a class="btn_avatar fa"  alt="avatar"></a>
+    <a class="avatar_name">{{ request.user.first_name }}</a>
+    <a class="avatar_name">{{ request.user.last_name }}</a>
+</div>
+<div class="page_container" style="display:flex; justify-content: space-around; align-items: top">
     <form action="{% url 'profile' %}" method="POST">
         {% csrf_token %}
-        <button class="astext"  style=" position:relative; left : 150px;">Profile</button>
+        <button class="astext">Profile</button>
     </form>
-    <button class="astext" style=" position:relative; left : 250px; top : -25px;">Mes commandes</button>
+    <form action="{% url 'logged_in' %}" method="GET">
+        <button class="astext">Accueil</button>
+    </form>
+    <form>
+        <button class="astext">Mes commandes</button>
+    </form>
     <a onClick="document.getElementById('logoutform').submit()">
-    <button type="button"  class="astext" style=" position:relative; left : 320px; top : -25px;">Deconnexion</button></a>
+    <button type="button"  class="astext">Deconnexion</button></a>
     <form id="logoutform" method="POST" action="{% url 'logout_view' %}">
     {% csrf_token %}
     <input type="hidden">
     </form>
 </div>
-<div class="page_center_container" >
-        <form action="{% url 'addingItem' %}"  method = "POST" >
+<div class="title">
+    <img src="{% static 'images/pharmacy.png' %}"  alt="logo" width="250" height="250">
+    <p> Pharmacie</p>
+</div>
+<div class="page_center_container" style="font-size: 26px; display:flex; justify-content: space-around; align-items: center">
+        <form action="{% url 'addingItem' %}"style="font-size:18px;"  method = "POST" >
             {% csrf_token %}
             {{ form.as_p }}
-    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-    <div class="card h-100">
-	    <div class="card-body">
-		    <div class="row gutters">
-			    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				    <h6 class="mb-2 text-primary">Liste des Médicaments </h6>
-			    </div>
-			    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="fullName">Ecrivez les médicaments dont vous avez besoin</label>
-					<input type="text" class="form-control" id="fullName">
-				</div>
-			</div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="ordonnance">Avez-vous une ordonnance ? Télechargez la</label>
-                    <input type="file" id="myFile" name="filename">
-				</div>
-			</div>
-		<div class="row gutters">
-			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				<div class="text-right">
-					<button type="submit" id="submit" name="submit" class="btn btn-primary">Ajouter au panier</button>
-				</div>
-			</div>
-		</div>
-        <div class="row gutters">
-			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				<div class="text-right">
-					<button class="information"> ?
-				        <span class="tooltiptext">Saisissez les noms des medicaments séparé avec "/" ou telechargez l'ordonnance </span>
-                    </button>
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                    <div class="card-body">
+		                <div class="row gutters">
+			                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				                <h6 class="mb-2 text-primary" style="font-size:26px;">Liste des Médicaments </h6>
+			                </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				            <div class="form-group">
+					            <label for="fullName">Ecrivez les médicaments dont vous avez besoin</label>
+					            <input type="text" class="form-control" id="fullName">
+				            </div>
+			            </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				            <div class="form-group">
+					            <label for="ordonnance">Avez-vous une ordonnance ? Télechargez la</label>
+                                <input type="file" id="myFile" name="filename">
+				            </div>
+			            </div>
+		                <div class="row gutters">
+			                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				                <div class="text-right">
+					                <button type="submit" id="submit" name="submit" class="btn btn-primary">Ajouter au panier</button>
+				                </div>
+			                </div>
+		                </div>
+                        <div class="row gutters">
+			                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				                <div class="text-right">
+					                <button class="information"> ?
+				                    <span class="tooltiptext">Saisissez les noms des medicaments séparé avec "/" ou telechargez l'ordonnance </span>
+                                    </button>
+                                </div>
+			                </div>
+		                </div>
+	                </div>
                 </div>
-			</div>
-		</div>
-	</div>
+            </div>
+            </div>
+        </form>
 </div>
-</div>
-</form>
-</div>
-<body>
   <footer class="new_footer_area bg_color">
     <div class="new_footer_top">
         <div class="container">
@@ -141,6 +153,5 @@
         </div>
     </div>
 </footer>
-</body>
 </body>
 </html>

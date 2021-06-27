@@ -18,94 +18,108 @@
 
 </head>
 
-
-<div class="page_container">
-    <img src="{% static 'images/logoHED.png' %}"  alt="logo" style="float:right;width:280px;height:200px;">
-    <a class="btn_avatar fa"  alt="avatar" style="left : 30px; top : 2px;"></a>
-    <a class="avatar_name"style=" left : -30px; top : 30px;">{{ first_name }}</a>
-    <form action="{% url 'logged_in' %}" method="GET">
-        <button class="astext"  style=" position:relative; left : 150px;">Accueil</button>
-    </form>
-    <button class="astext" style=" position:relative; left : 250px; top : -25px;">Mes commandes</button>
-    <a onClick="document.getElementById('logoutform').submit()">
-    <button type="button"  class="astext" style=" position:relative; left : 320px; top : -25px;">Deconnexion</button></a>
-    <form id="logoutform" method="POST" action="{% url 'logout_view' %}">
-    {% csrf_token %}
-    <input type="hidden">
-    </form>
+<div id="page_header_container">
+    <img src="{% static 'images/logoHED.png' %}"  alt="logo" width="250" height="250">
+    <a class="btn_avatar fa"></a>
+    <a class="avatar_name">{{ request.user.first_name }}</a>
+    <a class="avatar_name">{{ request.user.last_name }}</a>
 </div>
-    <form action="{% url 'UpdateUserInfo' %}"  method = "POST" >
+<div class="page_container" style="display:flex; justify-content: space-around; align-items: top">
+    <form action="{% url 'profile' %}" method="POST">
+        {% csrf_token %}
+        <button class="astext" disabled>Profile</button>
+    </form>
+    <form action="{% url 'logged_in' %}" method="GET">
+        <button class="astext"  >Accueil</button>
+    </form>
+    <form>
+        <button class="astext" >Mes commandes</button>
+    </form>
+
+    <a onClick="document.getElementById('logoutform').submit()">
+        <button type="button"  class="astext" >Deconnexion</button>
+    </a>
+    <form id="logoutform" method="POST" action="{% url 'logout_view' %}">
+        {% csrf_token %}
+        <input type="hidden">
+    </form>
+
+</div>
+<div class="title">
+    <p> Update User Informations</p>
+</div>
+<div class="page_center_container" style="font-size:26px; display:flex; justify-content: space-around; align-items: center; width:max-width;height: 500px; ">
+    <form action="{% url 'UpdateUserInfo' %}"  method = "POST">
             {% csrf_token %}
             {{ form.as_p }}
     <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-    <div class="card h-100">
-	    <div class="card-body">
-		    <div class="row gutters">
-			    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				    <h6 class="mb-2 text-primary">Informations Personnelles </h6>
-			    </div>
-			    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="fullName">Nom et prenom</label>
-					<input type="text" class="form-control" id="fullName"  value="{{ first_name }} {{ last_name}}" disabled>
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="eMail">Email</label>
-					<input type="email" class="form-control" id="eMail" value="{{ email}}" disabled>
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="phone">Telephone</label>
-					<input type="text" name ="phone" class="form-control" id="phone" value="{{user.client.Telephone}}">
-				</div>
-			</div>
-		</div>
-		<div class="row gutters">
-			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				<h6 class="mt-3 mb-2 text-primary">Addresse</h6>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="Street">Rue</label>
-					<input type="name" name="adresse" class="form-control" id="Street" value="{{user.client.adresse}}">
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="ciTy">Ville</label>
-					<input type="name" name="city" class="form-control" id="ciTy" value="{{user.client.ville}}">
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="sTate">Complément d'adresse</label>
-					<input type="text" name="moreInfo" class="form-control" id="sTate" value="{{user.client.complementAdresse}}" >
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="zIp">Code Postal</label>
-					<input type="text" name="zipCode" class="form-control" id="zIp"value="{{user.client.codePostale}}" >
-				</div>
-			</div>
-		</div>
-		<div class="row gutters">
-			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				<div class="text-right">
-					<button type="button" onClick="window.location.reload();" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
-					<button type="submit" id="submit" name="submit" class="btn btn-primary">Update</button>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="card h-100">
+	        <div class="card-body">
+		        <div class="row gutters">
+			        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				        <h6 class="mb-2 text-primary" style="font-size:26px;">Informations Personnelles</h6>
+			        </div>
+			        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				        <div class="form-group">
+					        <label for="fullName" >Nom et prenom</label>
+					        <input type="text" class="form-control" id="fullName"  value="{{ first_name }} {{ last_name}}" disabled>
+				        </div>
+			        </div>
+			        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				        <div class="form-group">
+					        <label for="eMail">Email</label>
+					        <input type="email" class="form-control" id="eMail" value="{{ email}}" disabled>
+				        </div>
+			        </div>
+			        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				        <div class="form-group">
+					        <label for="phone">Telephone</label>
+					        <input type="text" name ="phone" class="form-control" id="phone" value="{{user.client.Telephone}}">
+				        </div>
+			        </div>
+		        </div>
+		        <div class="row gutters">
+			        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				        <h6 class="mt-3 mb-2 text-primary" style="font-size:26px;">Addresse</h6>
+			        </div>
+			        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				        <div class="form-group">
+					        <label for="Street">Rue</label>
+					        <input type="name" name="adresse" class="form-control" id="Street" value="{{user.client.adresse}}">
+				        </div>
+			        </div>
+			        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				        <div class="form-group">
+					        <label for="ciTy">Ville</label>
+					        <input type="name" name="city" class="form-control" id="ciTy" value="{{user.client.ville}}">
+				        </div>
+			        </div>
+			        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				        <div class="form-group">
+					        <label for="sTate">Complément d'adresse</label>
+					        <input type="text" name="moreInfo" class="form-control" id="sTate" value="{{user.client.complementAdresse}}" >
+				        </div>
+			        </div>
+			        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				        <div class="form-group">
+					        <label for="zIp">Code Postal</label>
+					        <input type="text" name="zipCode" class="form-control" id="zIp" value="{{user.client.codePostale}}" >
+				        </div>
+			        </div>
+		        </div>
+		        <div class="row gutters">
+			        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				        <div class="text-right">
+					        <button type="button" onClick="window.location.reload();" id="cancel" name="submit" class="btn btn-secondary">Cancel</button>
+					        <button type="submit" id="submit" name="submit" class="btn btn-primary">Update</button>
+				        </div>
+			        </div>
+		        </div>
+	        </div>
+        </div>
+    </div>
+    </form>
 </div>
-</div>
-</div>
-</div>
-</form>
      <footer class="new_footer_area bg_color">
     <div class="new_footer_top">
         <div class="container">
@@ -167,7 +181,7 @@
         </div>
     </div>
 </footer>
-</body>
+
 
 
 

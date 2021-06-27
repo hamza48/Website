@@ -77,7 +77,10 @@ def resend_token(request):
     messages.error(request, TOKEN_RESENDED(user_loggedin.email))
     return render(request,'home/confirmRegistration.html',context)
 
-
+def test(request):
+    context = {}
+    # This check is made to  logged out the user when he request home
+    return render(request, 'home/index.html', context)
 
 def home(request):
     context = {}

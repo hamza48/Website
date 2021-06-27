@@ -17,4 +17,5 @@ urlpatterns = [
 	url('token_display',  views.token_display, name='token_display'  ),
 	url('addingItem', 	  views.addingItem,    name='addingItem'     ),
 	url('myOrders',       views.myOrders,      name='myOrders'       ),
+	url('Test',           views.test,          name='Test'           ),
 ]

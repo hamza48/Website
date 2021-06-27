@@ -22,40 +22,76 @@
 </head>
 
 <body>
-
-<div class="page_container">
-    <img src="{% static 'images/logoHED.png' %}"  alt="logo" style="float:right;width:280px;height:200px;">
-    <a class="btn_avatar fa"  alt="avatar" style="left : 30px; top : 2px;"></a>
-    <a class="avatar_name"style=" left : -30px; top : 30px;">{{ request.user.first_name }}</a>
+<div id="page_header_container">
+    <img src="{% static 'images/logoHED.png' %}"  alt="logo" width="250" height="250">
+    <a class="btn_avatar fa"  alt="avatar"></a>
+    <a class="avatar_name">{{ request.user.first_name }}</a>
+    <a class="avatar_name">{{ request.user.last_name }}</a>
+</div>
+<div class="page_container" style="display:flex; justify-content: space-around; align-items: top">
     <form action="{% url 'profile' %}" method="POST">
         {% csrf_token %}
-        <button class="astext"  style=" position:relative; left : 150px;">Profile</button>
+        <button class="astext">Profile</button>
+    </form>
+    <form action="{% url 'logged_in' %}" method="GET">
+        <button class="astext"  disabled>Accueil</button>
     </form>
     <form action="{% url 'myOrders' %}" method="POST">
         {% csrf_token %}
-        <button class="astext" style=" position:relative; left : 250px; top : -25px;">Mes commandes</button>
+        <button class="astext">Mes commandes</button>
     </form>
-
+<!--
     <a onClick="document.getElementById('logoutform').submit()">
-    <button type="button"  class="astext" style=" position:relative; left : 320px; top : -25px;">Deconnexion</button></a>
+        <button type="button"  class="astext" >Deconnexion</button>
+    </a>
     <form id="logoutform" method="POST" action="{% url 'logout_view' %}">
-    {% csrf_token %}
-    <input type="hidden">
+        {% csrf_token %}
+        <input type="hidden">
     </form>
+    -->
+    <a href="#0" class="cd-popup-trigger">Deconnexion</a>
+    <div class="cd-popup" role="alert">
+   <div class="cd-popup-container">
+      <p>Vous etes sur vous voulez vous deconnecter ?</p>
+      <ul class="cd-buttons">
+         <li><a href="#0">Oui</a></li>
+         <li><a href="#0">Non</a></li>
+      </ul>
+      <a href="#0" class="cd-popup-close img-replace">Close</a>
+   </div> <!-- cd-popup-container -->
+</div> <!-- cd-popup -->
 </div>
-<div class="page_center_container">
-     <p class="title"> Une Envie à Oujda ? <br> On vous livre </p>
-     <a class="btn_gift fa" href="#" style="left: 350px; top : 70px;"></a>
-     <p class="butonSubtitles" style="left : 355px; top: 85px">Un cadeau </p>
-     <a class="btn_delivery fa" href="#" style="left: 560px; top: -90px;" ></a>
-     <p class="butonSubtitles" style="left : 565px; top: -75px">Une course </p>
-     <a class="btn_food fa" href="#" style="left: 770px; top: -250px;" ></a>
-     <p class="butonSubtitles" style="left : 780px; top: -235px">J'ai faim </p>
-     <a class="btn_pharmacy fa" href="{% url 'Pharmacy' %}" style="left: 130px; top: -407px;" ></a>
-     <p class="butonSubtitles" style="left : 138px; top: -387px">Pharmacie</p>
-     <a class="btn_attention fa" href="#" style="left: 970px; top: -570px;" ></a>
-     <p class="butonSubtitles" style="left : 975px; top: -555px">En panne ?</p>
+
+
+
+<p class="title"> Une Envie à Oujda ? <br> On vous livre </p>
+
+<div class="page_center_container"  style="font-size:26px; display:flex; justify-content: space-around; align-items: center; width:max-width;height: 500px; ">
+        <div>
+            <button class="btn_gift fa " href="#"></button>
+            <span class="butonSubtitles">Un Cadeau</span>
+        </div>
+        <div>
+            <button class="btn_delivery fa" href="#"></button>
+            <span class="butonSubtitles">Une Course</span>
+        </div>
+        <div>
+            <button class="btn_food fa" href="#"></button>
+            <span class="butonSubtitles">Une Course</span>
+        </div>
+        <div>
+            <form action="{% url 'Pharmacy' %}" method="POST">
+            {% csrf_token %}
+            <button class="btn_pharmacy fa"></button>
+            <span class="butonSubtitles"> Pharmacie</span>
+            </form>
+        </div>
+        <div>
+            <button class="btn_attention fa" href="#"></button>
+            <span class="butonSubtitles"> En Panne ? </span>
+        </div>
 </div>
+
 
      <footer class="new_footer_area bg_color">
     <div class="new_footer_top">
@@ -128,6 +164,31 @@ function openPopup() {
 }
 function closeForm() {
   document.getElementById("popup_class").style.display = "none";
+}
+// Get the button that opens the modal
+var btn = document.getElementById("logout");
+var modal = document.getElementById("myModal");
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+function confirmform() {
+  document.getElementById("myRegisterForm").style.display = "block";
+  document.getElementById("myForm").style.display = "none";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
 </script>
 
